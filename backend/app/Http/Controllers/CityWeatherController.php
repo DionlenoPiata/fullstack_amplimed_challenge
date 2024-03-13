@@ -10,11 +10,12 @@ class CityWeatherController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'cep' => 'required|string',
             'city' => 'required|string',
             'state' => 'required|string',
             'weather_icons' => 'required|string',
             'weather_descriptions' => 'required|string',
-            'cep' => 'required|string',
+            'is_day' => 'required|string',
             'temperature' => 'required|numeric',
             'feelslike' => 'required|numeric',
             'wind_speed' => 'required|numeric',
@@ -24,11 +25,12 @@ class CityWeatherController extends Controller
 
         $cityWeather = new CityWeather();
         
+        $cityWeather->cep = $request->cep;
         $cityWeather->city = $request->city;
         $cityWeather->state = $request->state;
         $cityWeather->weather_icons = $request->weather_icons;
         $cityWeather->weather_descriptions = $request->weather_descriptions;
-        $cityWeather->cep = $request->cep;
+        $cityWeather->is_day = $request->is_day;
         $cityWeather->temperature = $request->temperature;
         $cityWeather->feelslike = $request->feelslike;
         $cityWeather->wind_speed = $request->wind_speed;
@@ -53,7 +55,7 @@ class CityWeatherController extends Controller
         }
 
         // Paginação
-        $weatherData = $query->paginate(10);
+        $weatherData = $query->get();
 
         return response()->json($weatherData);
     }

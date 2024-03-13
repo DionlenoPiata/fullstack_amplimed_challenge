@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CityWeatherController;
+use App\Http\Controllers\WeatherStackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,4 @@ use App\Http\Controllers\CityWeatherController;
 */
 
 Route::apiResource('/city-weathers', CityWeatherController::class);
+Route::apiResource('/weather-stack', WeatherStackController::class);

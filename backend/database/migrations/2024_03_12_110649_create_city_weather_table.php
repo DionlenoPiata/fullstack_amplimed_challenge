@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('city_weather', function (Blueprint $table) {
             $table->id();
+            $table->string('cep');
             $table->string('city');
             $table->string('state');
             $table->string('weather_icons');
             $table->string('weather_descriptions');
-            $table->string('cep');
+            $table->string('is_day');
             $table->unsignedInteger('temperature');
             $table->unsignedInteger('feelslike');
             $table->unsignedInteger('wind_speed');
