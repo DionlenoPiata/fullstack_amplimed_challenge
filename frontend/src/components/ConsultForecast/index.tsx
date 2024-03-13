@@ -9,8 +9,6 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import InputMask from "react-input-mask";
 import { WeatherData } from "../../types";
-// retirar
-import { responsePiata } from "./constants";
 
 interface Props {
   onDataReceived: (data: WeatherData) => void;
@@ -34,8 +32,17 @@ function ConsultForecast({ onDataReceived }: Props) {
       cidade: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      onDataReceived(responsePiata);
+    onSubmit: async (values) => {
+      let url = `${
+        process.env.REACT_APP_URL_API
+      }/weather-stack?city=${encodeURI(
+        values.cidade.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      )},%20Brazil&cep=${values.cep}`;
+
+      const response = await fetch(url);
+
+      const data = await response.json();
+      onDataReceived(data);
     },
   });
 

@@ -3,15 +3,13 @@ import { Box, Paper, Typography } from "@mui/material";
 import { WeatherData } from "../../types";
 import { CODES_CONDITIONS } from "./constants";
 
-interface WeatherInformationCardProps {
+interface WeatherInformationHistoricCardProps {
   weatherData: WeatherData | null;
 }
 
-const WeatherInformationCard: React.FC<WeatherInformationCardProps> = ({
-  weatherData,
-}) => {
-  const today = new Date();
-
+const WeatherInformationHistoricCard: React.FC<
+  WeatherInformationHistoricCardProps
+> = ({ weatherData }) => {
   return (
     <>
       {weatherData ? (
@@ -24,7 +22,8 @@ const WeatherInformationCard: React.FC<WeatherInformationCardProps> = ({
             width={"100%"}
           >
             <Typography variant="h6">
-              Clima para Hoje {today.getDate()}/{today.getMonth() + 1} em{" "}
+              Clima do dia{" "}
+              {new Date(weatherData.created_at).toLocaleDateString()} em{" "}
               {weatherData.city} - {weatherData.state}
             </Typography>
 
@@ -104,4 +103,4 @@ const WeatherInformationCard: React.FC<WeatherInformationCardProps> = ({
   );
 };
 
-export default WeatherInformationCard;
+export default WeatherInformationHistoricCard;
