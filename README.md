@@ -16,6 +16,10 @@ No backend, a organização seguiu o modelo recomendado pelo framework Laravel:
 - **Pastas:** O backend foi estruturado de acordo com as práticas recomendadas do Laravel.
 - **Consumo da API Weatherstack:** O backend é responsável por consumir a API da Weatherstack em vez de realizar solicitações diretamente do frontend. Isso foi feito por motivos de segurança, evitando expor o token da API.
 
+## Demostração
+
+![Desmostração da aplicação em funcionamento](demo.gif)
+
 ## Observações
 
 Ao dividir o sistema em frontend e backend, visamos uma separação clara de responsabilidades e uma arquitetura mais modular. Essa abordagem facilita a manutenção, o teste e o desenvolvimento de novos recursos.
